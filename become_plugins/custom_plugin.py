@@ -92,13 +92,13 @@ class BecomeModule(BecomeBase):
         flags = self.get_option('become_flags') or ''
         prompt = ''
         if self.get_option('become_pass'):
-            self.prompt = '[custom_plugin via ansible, key=%s] password:' % self._id
+            self.prompt = f'[custom_plugin via ansible, key={self._id}] password:'
             if flags:  # this could be simplified, but kept as is for now for backwards string matching
                 flags = flags.replace('-n', '')
             prompt = '-p "%s"' % (self.prompt)
 
         user = self.get_option('become_user') or ''
         if user:
-            user = '-u %s' % (user)
+            user = f'-u {user}'
 
         return ' '.join([becomecmd, flags, prompt, user, self._build_success_command(cmd, shell)])

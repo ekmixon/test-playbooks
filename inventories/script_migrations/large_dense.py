@@ -9,9 +9,9 @@ Nh = int(os.environ.get("NUM_HOSTS", 189))
 
 data = {"_meta": {"hostvars": {}}}
 
-hosts = ["Host-{}".format(i) for i in range(Nh)]
+hosts = [f"Host-{i}" for i in range(Nh)]
 
 for i in range(Ng):
-    data["Group-{}".format(i)] = {"hosts": hosts}
+    data[f"Group-{i}"] = {"hosts": hosts}
 
 print(json.dumps(data, indent=2))

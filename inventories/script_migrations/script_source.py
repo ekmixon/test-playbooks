@@ -16,15 +16,11 @@ def random_str(non_ascii=True):
     return "".join([random.choice(char_list) for _ in range(10)])
 
 
-inventory = dict()
-
 group_name = "group_%s" % random_str(non_ascii=False)
 
-inventory[group_name] = dict()
-inventory[group_name]["hosts"] = list()
-
-for i in range(5):
-    inventory[group_name]["hosts"].append("host_%s" % random_str())
+inventory = {group_name: {"hosts": []}}
+for _ in range(5):
+    inventory[group_name]["hosts"].append(f"host_{random_str()}")
 
 inventory[group_name]["vars"] = dict(
     ansible_host="127.0.0.1", ansible_connection="local"

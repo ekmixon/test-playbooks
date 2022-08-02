@@ -3,7 +3,7 @@ import os
 import json
 import re
 
-errors = list()
+errors = []
 
 # assert that only one awx_\w*_\w* tempfile is visible
 awx_tmp_files = []
@@ -24,8 +24,7 @@ if len(awx_tmp_files) > 1:
 for tower_projects_dir in ("/var/lib/awx/projects", "/var/lib/tower/projects"):
     if not os.path.isdir(tower_projects_dir):
         continue
-    files = os.listdir(tower_projects_dir)
-    if files:
+    if files := os.listdir(tower_projects_dir):
         files = [os.path.join(tower_projects_dir, f) for f in files]
         errors.append(("Tower project directories", files))
 
@@ -33,8 +32,7 @@ for tower_projects_dir in ("/var/lib/awx/projects", "/var/lib/tower/projects"):
 for tower_job_status_dir in ("/var/lib/awx/job_status", "/var/lib/tower/job_status"):
     if not os.path.isdir(tower_job_status_dir):
         continue
-    files = os.listdir(tower_job_status_dir)
-    if files:
+    if files := os.listdir(tower_job_status_dir):
         files = [os.path.join(tower_job_status_dir, f) for f in files]
         errors.append(("Tower job_status files", files))
 
@@ -42,8 +40,7 @@ for tower_job_status_dir in ("/var/lib/awx/job_status", "/var/lib/tower/job_stat
 for tower_conf_dir in ("/etc/awx", "/etc/tower"):
     if not os.path.isdir(tower_conf_dir):
         continue
-    files = os.listdir(tower_conf_dir)
-    if files:
+    if files := os.listdir(tower_conf_dir):
         files = [os.path.join(tower_conf_dir, f) for f in files]
         errors.append(("Tower config files", files))
 
@@ -51,8 +48,7 @@ for tower_conf_dir in ("/etc/awx", "/etc/tower"):
 for tower_log_dir in ("/var/log/awx", "/var/log/tower"):
     if not os.path.isdir(tower_log_dir):
         continue
-    files = os.listdir(tower_log_dir)
-    if files:
+    if files := os.listdir(tower_log_dir):
         files = [os.path.join(tower_log_dir, f) for f in files]
         errors.append(("Tower log files", files))
 

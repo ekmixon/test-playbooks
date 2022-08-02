@@ -45,8 +45,7 @@ EXAMPLES = '''
 '''
 
 def main():
-    module = AnsibleModule(
-        argument_spec = dict())
+    module = AnsibleModule(argument_spec={})
 
     string="abc"
     unicode_string="鵟犭酜귃ꔀꈛ竳䙭韽ࠔ"

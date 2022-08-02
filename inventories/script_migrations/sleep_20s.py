@@ -2,5 +2,5 @@
 import json, time
 
 time.sleep(20)
-inventory = dict()
+inventory = {}
 print(json.dumps(inventory))

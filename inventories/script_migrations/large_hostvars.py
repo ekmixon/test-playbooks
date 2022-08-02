@@ -4,7 +4,7 @@ import random
 import string
 
 
-UNICODE_LETTERS = string.ascii_letters + ("읤僪䠱빨胀콩厺殜赬镗צּ䂕ᆑ䭆蜅펵ꂢ綌靸縹聂傈㟩륯Ȳ北벊렙ぶ逖ϥ谺艣뒉摳")
+UNICODE_LETTERS = f"{string.ascii_letters}읤僪䠱빨胀콩厺殜赬镗צּ䂕ᆑ䭆蜅펵ꂢ綌靸縹聂傈㟩륯Ȳ北벊렙ぶ逖ϥ谺艣뒉摳"
 
 
 random_str = "".join([random.choice(UNICODE_LETTERS) for _ in range(10)])
